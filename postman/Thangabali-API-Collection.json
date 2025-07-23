@@ -1,0 +1,104 @@
+{
+  "info": {
+    "name": "Thangabali API Collection",
+    "_postman_id": "12345678-aaaa-bbbb-cccc-1234567890ab",
+    "description": "Postman collection for Thangabali backend APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth - Register",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Laavanya\",\n  \"email\": \"laavanya@gmail.com\",\n  \"password\": \"test123\",\n  \"role\": \"buyer\"\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/auth/register", "host": ["localhost"], "port": "5000", "path": ["api", "auth", "register"] }
+      }
+    },
+    {
+      "name": "Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"laavanya@gmail.com\",\n  \"password\": \"test123\"\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/auth/login", "host": ["localhost"], "port": "5000", "path": ["api", "auth", "login"] }
+      }
+    },
+    {
+      "name": "Product - Add (Seller)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"T-shirt\",\n  \"price\": 499,\n  \"category\": \"Clothing\",\n  \"stock\": 100\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/seller/add-product", "host": ["localhost"], "port": "5000", "path": ["api", "seller", "add-product"] }
+      }
+    },
+    {
+      "name": "Product - View (Buyer)",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:5000/api/buyer/products", "host": ["localhost"], "port": "5000", "path": ["api", "buyer", "products"] }
+      }
+    },
+    {
+      "name": "Order - Place (Buyer)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"productId\": \"<product_id>\",\n  \"quantity\": 2\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/buyer/order", "host": ["localhost"], "port": "5000", "path": ["api", "buyer", "order"] }
+      }
+    },
+    {
+      "name": "Admin - View All Users",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{admin_token}}" }],
+        "url": { "raw": "http://localhost:5000/api/admin/users", "host": ["localhost"], "port": "5000", "path": ["api", "admin", "users"] }
+      }
+    },
+    {
+      "name": "Payment - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"orderId\": \"<order_id>\",\n  \"amount\": 998\n}"
+        },
+        "url": { "raw": "http://localhost:5000/api/payment/initiate", "host": ["localhost"], "port": "5000", "path": ["api", "payment", "initiate"] }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "admin_token",
+      "value": ""
+    }
+  ]
+}

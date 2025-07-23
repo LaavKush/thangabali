@@ -63,6 +63,10 @@ npm start
 | PUT    | /api/products/:id   | Update product info          |
 | DELETE | /api/products/:id   | Delete product (auth)        |
 
+📮 Postman API Collection
+    A Postman collection is included in the repo at:
+
+        📁 postman/Thangabali-API-Collection.json
 
 
 ## 📃 License
